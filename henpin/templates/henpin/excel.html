@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<header>
+    <div class="header-title">
+        <i class="fa-solid fa-boxes-stacked fa-4x"></i>
+        <h1>返品台帳</h1>
+    </div>
+    
+</header>
+<form action="/file_select" method="post">
+    <div class="container">
+        <input type="file" name="filename" accept=".xlsx">
+        <button type="submit" class="btn btn-primary">登録</button>
+        
+    </div>
+</from>
+
+
+{% endblock %}

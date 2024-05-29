@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<header>
+    <div class="header-title">
+        <i class="fa-solid fa-boxes-stacked fa-4x"></i>
+        <h1>返品台帳</h1>
+    </div>
+    <button onclick="location.href='http://192.168.1.42:5000/excel'" class="btn btn-secondary">管理用</button>
+    
+</header>
+
+<div class="container">
+    <form action="/henpinform" method="post">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th class="shoseki" scope="col">書籍</th>
+                    <th class="zassi" scope="col">雑誌</th>
+                    <th class="comic" scope="col">コミック</th>
+                    <th class="bunko" scope="col">文庫</th>
+                    <th class="other" scope="col">その他</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">返品番号</th>
+                    <td><input type="number" name="no1" max="9999"></td>
+                    <td><input type="number" name="no2" max="9999"></td>
+                    <td><input type="number" name="no3" max="9999"></td>
+                    <td><input type="number" name="no4" max="9999"></td>
+                    <td><input type="number" name="no5" max="9999"></td>
+                    
+
+                </tr>
+                <tr>
+                    <th scope="row">箱数</th>
+                    <td><input type="number" name="box1" min="0" max="20" value="0"></td>
+                    <td><input type="number" name="box2" min="0" max="20" value="0"></td>
+                    <td><input type="number" name="box3" min="0" max="20" value="0"></td>
+                    <td><input type="number" name="box4" min="0" max="20" value="0"></td>
+                    <td><input type="number" name="box5" min="0" max="20" value="0"></td>
+                </tr>
+                <tr>
+                    <th scope="row">日付</th>
+                    <td><input name="date" value= {{ insert_datenow }} required></td>
+                </tr>
+                <tr>
+                    <th scope="row">渡し日</th>
+                    <td><input name="sdate" value= {{ insert_datenext }} required></td>
+                </tr>
+                <tr>
+                    <th scope="row">入力者</th>
+                    <td><input list="states" name="name" required></td>
+                    <datalist id="states">
+                        <option value="浅倉"></option>
+                        <option value="赤羽"></option>
+                        <option value="古賀"></option>
+                        <option value="三浦"></option>
+                        <option value="福山"></option>
+                        <option value="助川"></option>
+                        <option value="細見"></option>
+                    </datalist>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">{{ sub }}</button>
+    </form>
+</div>
+{% endblock %}
